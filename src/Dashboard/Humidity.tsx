@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const API_KEY = "0dc111d298fc88120c87a6b1d619f43a"; // Tu API Key de OpenWeatherMap
-const CITY = "Ciudad de México"; // Cambia la ciudad si lo necesitas
+const API_KEY = "0dc111d298fc88120c87a6b1d619f43a";
+const CITY = "Ciudad de México";
 
 const Humidity: React.FC = () => {
   const [humidity, setHumidity] = useState<number | null>(null);
@@ -39,29 +39,29 @@ const Humidity: React.FC = () => {
 
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
-    background: "#ffffff", // Cambié el color del fondo a blanco
-    color: "black", // Cambié el color del texto a negro
-    padding: "30px", // Ajustando el padding para más espacio
+    background: "#ffffff",
+    color: "black",
+    padding: "30px",
     borderRadius: "10px",
     textAlign: "center",
-    width: "271px", // Ajustando el ancho
-    height: "171px", // Ajustando la altura
+    width: "271px",
+    height: "171px",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center", // Centrado vertical
-    alignItems: "center", // Centrado horizontal
-    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", // Agregué una sombra para darle más profundidad
+    justifyContent: "center",
+    alignItems: "center",
+    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
   },
   description: {
-    fontSize: "20px", // Tamaño moderado
+    fontSize: "20px",
     fontWeight: "bold",
     marginBottom: "8px",
     textTransform: "uppercase",
   },
   humidity: {
-    fontSize: "26px", // Tamaño moderado
+    fontSize: "26px",
     fontWeight: "bold",
-    color: "black", // Cambié el color del porcentaje a negro
+    color: "black",
   },
 };
 

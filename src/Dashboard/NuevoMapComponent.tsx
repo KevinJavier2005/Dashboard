@@ -3,7 +3,6 @@ import mapboxgl from "mapbox-gl";
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiMjMzOTMzMTMiLCJhIjoiY20yOTJyaWJsMDEzeDJscTRqNWFlcTdiZCJ9.UiuFv_W8224_PzoVtdH5mQ";
 
-// Lista de ubicaciones de cultivos (puedes añadir más elementos aquí)
 const ubicacionesCultivos = [
   { lat: -90.17869520925468, lng: 19.208107721273798, nombre: "Campeche" },
   { lat: -92.9092031387529, lng: 17.001494145000205, nombre: "Chiapas" },
@@ -17,13 +16,10 @@ const ubicacionesCultivos = [
 const NuevoMapComponent: React.FC = () => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const myMap = useRef<mapboxgl.Map | null>(null);
-  const markersRef = useRef<mapboxgl.Marker[]>([]); // Almacena los marcadores
-
-  // Función para agregar marcadores y hacer que permanezcan
+  const markersRef = useRef<mapboxgl.Marker[]>([]);
   const addMarkers = (ubicaciones: { lat: number; lng: number; nombre: string }[]) => {
     if (!myMap.current) return;
 
-    // Limpiar marcadores previos antes de agregar nuevos
     markersRef.current.forEach(marker => marker.remove());
     markersRef.current = [];
 
@@ -33,13 +29,12 @@ const NuevoMapComponent: React.FC = () => {
       const marker = new mapboxgl.Marker()
         .setLngLat([ubicacion.lng, ubicacion.lat])
         .setPopup(new mapboxgl.Popup().setHTML(`<h3>${ubicacion.nombre}</h3>`))
-        .addTo(myMap.current!); // Agregar al mapa
+        .addTo(myMap.current!);
 
-      markersRef.current.push(marker); // Guardar referencia del marcador
+      markersRef.current.push(marker);
     });
   };
 
-  // Configuración del mapa y marcadores al cargar
   useEffect(() => {
     if (!mapContainerRef.current) return;
 
@@ -48,19 +43,18 @@ const NuevoMapComponent: React.FC = () => {
     myMap.current = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: "mapbox://styles/mapbox/outdoors-v12",
-      center: [-99.1332, 19.4326], // Ubicación central (México)
+      center: [-99.1332, 19.4326],
       zoom: 5,
       attributionControl: false,
     });
 
-    // Cuando el mapa cargue, agregar los marcadores automáticamente
     myMap.current.on("load", () => {
-      addMarkers(ubicacionesCultivos); // Colocar los marcadores de las ubicaciones registradas
+      addMarkers(ubicacionesCultivos);
     });
 
     return () => {
       if (myMap.current) {
-        myMap.current.remove(); // Limpiar mapa al desmontar el componente
+        myMap.current.remove();
       }
     };
   }, []);
@@ -94,5 +88,3 @@ const styles: { [key: string]: React.CSSProperties } = {
 };
 
 export default NuevoMapComponent;
-
-

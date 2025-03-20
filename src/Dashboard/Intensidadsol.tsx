@@ -7,8 +7,7 @@ const IntensidadSol: React.FC = () => {
   const [intensidad, setIntensidad] = useState<number | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [aproximado, setAproximado] = useState<number | null>(null);
-  const [estimado, setEstimado] = useState<number>(Math.random() * 11); // Genera un valor estimado entre 0 y 11
-
+  const [estimado, setEstimado] = useState<number>(Math.random() * 11);
   useEffect(() => {
     const fetchIntensidadSol = async () => {
       try {
@@ -17,12 +16,10 @@ const IntensidadSol: React.FC = () => {
         );
         const uvIndex = response.data.current.uvi;
         setIntensidad(uvIndex);
-        
-        // Genera un número aproximado sumando o restando hasta 0.5
+
         const randomFactor = (Math.random() - 0.5) * 0.5;
         setAproximado(parseFloat((uvIndex + randomFactor).toFixed(1)));
       } catch (err) {
-        // No se mostrará ningún mensaje de error
       } finally {
         setLoading(false);
       }
@@ -62,49 +59,49 @@ const IntensidadSol: React.FC = () => {
 
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
-    background: "white", // Fondo blanco
-    color: "black", // Color de texto negro
-    padding: "40px", // Aumentando el padding para más espacio
+    background: "white",
+    color: "black",
+    padding: "40px",
     borderRadius: "10px",
     textAlign: "center",
-    width: "250px", // Aumentando el ancho
-    height: "150px", // Aumentando la altura
+    width: "250px",
+    height: "150px",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center", // Centrado vertical
-    alignItems: "center", // Centrado horizontal
+    justifyContent: "center",
+    alignItems: "center",
   },
   description: {
-    fontSize: "20px", // Aumentando el tamaño de la descripción
+    fontSize: "20px",
     fontWeight: "bold",
     marginBottom: "10px",
     textTransform: "uppercase",
   },
   estimado: {
-    fontSize: "25px", // Aumentando el tamaño del estimado
+    fontSize: "25px",
     fontWeight: "bold",
-    color: "black", // Números de color negro
+    color: "black",
     marginTop: "10px",
   },
   aproximado: {
-    fontSize: "22px", // Aumentando el tamaño de la aproximación
+    fontSize: "22px",
     fontWeight: "bold",
-    color: "black", // Números de color negro
+    color: "black",
     marginTop: "5px",
   },
   intensidad: {
-    fontSize: "30px", // Aumentando el tamaño del índice UV
+    fontSize: "30px",
     fontWeight: "bold",
-    color: "black", // Números de color negro
+    color: "black",
     marginTop: "15px",
   },
   info: {
-    fontSize: "16px", // Aumentando el tamaño del texto informativo
+    fontSize: "16px",
     marginTop: "15px",
   },
   intensidadBar: {
     width: "100%",
-    height: "12px", // Aumentando la altura de la barra de intensidad
+    height: "12px",
     background: "#555",
     borderRadius: "5px",
     marginTop: "15px",
@@ -117,5 +114,3 @@ const styles: { [key: string]: React.CSSProperties } = {
 };
 
 export default IntensidadSol;
-
-

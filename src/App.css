@@ -1,8 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #007bff; /* Azul brillante */
-  color: white; /* Texto en blanco para mejor contraste */
+  background-color: #007bff;
+  color: white;
   font-family: Arial, sans-serif;
 }
 
@@ -13,4 +13,3 @@ body {
   justify-content: center;
   align-items: center;
 }
-

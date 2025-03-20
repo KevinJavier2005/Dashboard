@@ -52,8 +52,8 @@ const Weather: React.FC = () => {
 
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
-    background: "white", // Cambio a fondo blanco
-    color: "black", // Cambiar color de texto a negro para contraste
+    background: "white",
+    color: "black",
     padding: "40px",
     borderRadius: "10px",
     textAlign: "center",

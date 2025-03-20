@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const API_KEY = "0dc111d298fc88120c87a6b1d619f43a";
-const CITY = "Ciudad de México"; // Puedes cambiar la ciudad
+const CITY = "Ciudad de México";
 
 interface ClimaData {
   description: string;
@@ -23,7 +23,7 @@ const Clima: React.FC = () => {
         const data = response.data;
         setClima({
           description: data.weather[0].description,
-          icon: data.weather[0].main.toLowerCase(), // Actualiza para mostrar el ícono según el clima
+          icon: data.weather[0].main.toLowerCase(),
         });
       } catch (err) {
         setError("Error al obtener el clima");
@@ -38,7 +38,6 @@ const Clima: React.FC = () => {
   if (loading) return <p>Cargando...</p>;
   if (error) return <p>{error}</p>;
 
-  // Lógica para mostrar el ícono de sol
   const getSolIcon = () => {
     if (clima && (clima.description.includes("soleado") || clima.description.includes("clear") || clima.description.includes("sunny"))) {
       return (
@@ -72,21 +71,21 @@ const Clima: React.FC = () => {
 
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
-    background: "#ffffff", // Cambié el color del fondo a blanco
-    color: "black", // Cambié el color del texto a negro
-    padding: "30px", // Ajustando el padding para mayor espacio
+    background: "#ffffff",
+    color: "black",
+    padding: "30px",
     borderRadius: "10px",
     textAlign: "center",
-    width: "271px", // Ajustando el ancho
-    height: "171px", // Ajustando la altura
+    width: "271px",
+    height: "171px",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center", // Centrado vertical
-    alignItems: "center", // Centrado horizontal
-    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", // Agregué una sombra para darle más profundidad
+    justifyContent: "center",
+    alignItems: "center",
+    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
   },
   description: {
-    fontSize: "20px", // Tamaño moderado
+    fontSize: "20px",
     fontWeight: "bold",
     marginBottom: "8px",
     textTransform: "uppercase",
@@ -95,10 +94,9 @@ const styles: { [key: string]: React.CSSProperties } = {
     marginTop: "10px",
   },
   icon: {
-    width: "100px", // Aumenté el tamaño del ícono
-    height: "100px", // Aumenté el tamaño del ícono
+    width: "100px",
+    height: "100px",
   },
 };
 
 export default Clima;
-
